@@ -51,6 +51,7 @@ def transcribe_video(video_id):
 
     except:
         try:
+            transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
             transcript = transcript_list.find_transcript([t.language_code for t in transcript_list])
             translated = transcript.translate('en').fetch()
             return {
